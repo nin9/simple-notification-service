@@ -1,5 +1,6 @@
 import amqplib from 'amqplib'
 import rabbitmq from '../config/rabbitmq.js'
+import NotificationService from '../services/notification_service.js'
 
 export class Consumer {
   async connect() {
@@ -8,9 +9,12 @@ export class Consumer {
     await channel.assertQueue(rabbitmq.queue, { durable: false })
     console.log('Connected to rabbitmq')
 
-    await channel.consume(rabbitmq.queue, function (msg) {
-      console.log(msg.content.toString())
-      channel.ack(msg)
+    await channel.consume(rabbitmq.queue, function (message) {
+      const content = message.content.toString()
+      const msg = JSON.parse(content)
+      console.log(`Received ${content}`)
+      NotificationService.process(msg)
+      channel.ack(message)
     })
   }
 }
