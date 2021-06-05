@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  ##node_app##
+  node_app:
+    build: .
+    command: npm run dev
+    depends_on:
+      - rabbitmq
+      - mongo
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+
+  ##RabbitMQ##
+  rabbitmq:
+    image: "rabbitmq:3.8.3-management"
+    container_name: "rabbitmq"
+    ports:
+      - "15673:15672"
+    env_file:
+      - .env
+
+  ##Mongo##
+  mongo:
+    image: "mongo:4.0"
+    container_name: "mongo"
+    ports:
+      - "27018:27017"

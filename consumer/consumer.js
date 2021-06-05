@@ -4,7 +4,7 @@ import NotificationService from '../services/notification_service.js'
 
 export class Consumer {
   async connect() {
-    const amqbClient = await amqplib.connect(`amqp://${rabbitmq.host}:5672`)
+    const amqbClient = await amqplib.connect(`amqp://${rabbitmq.host}`)
     const channel = await amqbClient.createChannel()
     await channel.assertQueue(rabbitmq.queue, { durable: false })
     console.log('Connected to rabbitmq')
