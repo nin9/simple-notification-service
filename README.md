@@ -48,7 +48,8 @@ The database is exposed on port _27018_ and rabbitmq management portal is expose
 
 1. Connect to the database from any mongo client and copy the id of one of the seeded notifications.
 
-2. Open the rabbitmq management portal and publish a message to the queue containg the notification id as explained above.
+2. Other services are supposed to publish to the queue, we can simulate this by publishing from the management portal.
+Open the rabbitmq management portal and publish a message to the queue containg the notification id as explained above.
 
 3. The service logs the following depending on the notification type:
 
