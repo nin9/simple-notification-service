@@ -40,7 +40,7 @@ docker-compose exec node_app npm run seed
 
    Single notifications are intended for a single user or a small goup of users while topic notifications are intended for a large number of users.
 
-3. NotificationService defined in **notification_service.js** decides the appropiate service **SingleMessageService/TopicMessageService** to handle the notification based on its type these services then call the providers to send the notification to the consumers.
+3. NotificationService defined in **notification_service.js** decides the appropiate service **SingleMessageService/TopicMessageService** to handle the notification based on its type, these services then call the providers to send the notification to the consumers.
 
 ## Scenario
 
@@ -48,7 +48,7 @@ The database is exposed on port _27018_ and rabbitmq management portal is expose
 
 1. Connect to the database from any mongo client and copy the id of one of the seeded notifications.
 
-2. Open the rabbitmq management portal and send a message to the queue containg the notification id as explained above.
+2. Open the rabbitmq management portal and publish a message to the queue containg the notification id as explained above.
 
 3. The service logs the following depending on the notification type:
 
