@@ -6,8 +6,10 @@ services:
     build: .
     command: npm run dev
     depends_on:
-      - rabbitmq
-      - mongo
+      rabbitmq:
+        condition: service_healthy
+      mongo:
+        condition: service_started
     volumes:
       - .:/app
     env_file:
@@ -19,6 +21,11 @@ services:
     container_name: "rabbitmq"
     ports:
       - "15673:15672"
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
     env_file:
       - .env
 
