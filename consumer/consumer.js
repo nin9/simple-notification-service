@@ -6,7 +6,7 @@ export class Consumer {
   async connect() {
     const amqbClient = await amqplib.connect(`amqp://${rabbitmq.host}`)
     const channel = await amqbClient.createChannel()
-    await channel.assertQueue(rabbitmq.queue, { durable: false })
+    await channel.assertQueue(rabbitmq.queue)
     console.log('Connected to rabbitmq')
 
     await channel.consume(rabbitmq.queue, function (message) {
