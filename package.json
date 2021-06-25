@@ -12,11 +12,15 @@
   "license": "ISC",
   "dependencies": {
     "amqplib": "^0.8.0",
+    "limiter": "^2.0.1",
     "mongoose": "^5.12.12",
     "nodemon": "^2.0.7"
   },
   "type": "module",
   "engines": {
     "node": ">=14"
+  },
+  "devDependencies": {
+    "jest": "^27.0.4"
   }
 }
