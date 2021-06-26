@@ -16,6 +16,8 @@ docker-compose exec node_app npm run seed
 
 ## Design
 
+![Design diagram](/readme_assets/diagram.png)
+
 1. The service consumes messages from **rabbitmq**, these messages are the ids of the notifications to be processed.
 
    rabbitmq message example:
@@ -41,6 +43,8 @@ docker-compose exec node_app npm run seed
    Single notifications are intended for a single user or a small goup of users while topic notifications are intended for a large number of users.
 
 3. NotificationService defined in **notification_service.js** decides the appropiate service **SingleMessageService/TopicMessageService** to handle the notification based on its type, these services then call the providers to send the notification to the consumers.
+
+4. This service has no public APIs, the only of way of communication with the it is by sending messages through **rabbitmq**.
 
 ## Scenario
 
