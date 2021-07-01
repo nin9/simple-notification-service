@@ -13,7 +13,8 @@ console.log('Running seeds...')
 const user = await User.create({
   email: 'email@example.com',
   mobile: '+111111111111',
-  token: 'token'
+  token: 'token',
+  language: 'ar'
 })
 
 await Notification.create({
