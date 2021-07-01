@@ -18,7 +18,7 @@ docker-compose exec node_app npm run seed
 
 ![Design diagram](/readme_assets/diagram.png)
 
-1. The service consumes messages from **rabbitmq**, these messages are the ids of the notifications to be processed.
+1. The service consumes messages from **rabbitmq** *(this is the only way to communicate with the service)*, these messages are the ids of the notifications to be processed.
 
    rabbitmq message example:
 
@@ -68,3 +68,7 @@ Sent Notification #2 via FCM to topic: topic_1
 Sent Notification #2 via SMS to topic: topic_1
 Sent Notification #2 via Email to topic: topic_1
 ```
+
+## Future Improvments
+
+Depending on the scale and the load on the service we may need to add a cache in front of the database to decrease the hits on it.
