@@ -71,4 +71,5 @@ Sent Notification #2 via Email to topic: topic_1
 
 ## Future Improvments
 
-Depending on the scale and the load on the service we may need to add a cache in front of the database to decrease the hits on it.
+- Depending on the scale and the load on the service we may need to add a cache in front of the database to decrease the hits on it.
+- Handle localization in case of topic notifications.
